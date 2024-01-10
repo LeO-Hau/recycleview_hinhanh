@@ -1,0 +1,39 @@
+package com.leconghau.recycleview_hinhanh
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val rcvPhim = findViewById<RecyclerView>(R.id.rcvPhim)
+        val list = mutableListOf(
+            Phim(hinh = R.drawable.tiennghich, tenPhim = "Tiên Nghịch", theLoai = "Huyền huyễn, Tiên hiệp, Cổ trang", tomtat = "Cải biên từ tiểu thuyết “Tiên Nghịch” của tác giả Nhĩ Căn, kể về thiếu niên bình phàm Vương Lâm xuất thân nông thôn, mang theo nhiệt huyết, tu luyện nghịch tiên, không chỉ cầu trường sinh, mà còn muốn thoát khỏi thân phận giun dế. Hắn tin rằng đạo do người quyết định, dùng tư chất bình phàm bước vào con đường tu chân, trải qua bao phong ba bão táp, dựa vào trí tuệ sáng suốt, từng bước một bước lên đỉnh cao, dựa vào sức một người, danh chấn Tu chân giới."),
+            Phim(hinh = R.drawable.luyenkhimuoivannam, tenPhim = "Luyện Khí Mười Vạn Năm", theLoai = "Tiên hiệp, Cổ trang", tomtat = "Mười vạn năm trước Thiên Lam Tông vang dội giới tu chân, đệ tử trong tông đều là những đứa con của trời, đánh đâu thắng đó. Chỉ có khai sơn đệ tử Từ Dương vẫn luôn ở Luyện Khí kỳ, để đột phá tu vi sớm ngày phi thăng, Từ Dương bế quan vạn năm. Ai ngờ trong thời gian bế quan giới tu chân đã xuống dốc, Thiên Lam Tông cũng chỉ còn vài ba đệ tử, thấy sắp phải đối mặt với diệt tông, Từ Dương đánh bại cường địch, thề sẽ dẫn dắt Thiên Lam Tông quay về đỉnh cao!" ),
+            Phim(hinh = R.drawable.giathien, tenPhim = "Gìa Thiên", theLoai = "Huyền huyễn, Tiên hiệp, Xuyên không", tomtat = "Một chàng trai thành đạt được bạn bè yêu quý. Trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. Nơi đó, mọi mâu thuẫn chỉ có thể giải quyết bằng sức mạnh…Có tồn tại thế giới thần tiên này ư? Có phải đây chỉ là những truyền thuyết hay sự tích ? Những gì nhìn thấy là sự thật hay là ảo mộng.\n" +
+                    "Phim được chuyển thể từ tiểu thuyết “Già Thiên” của tác giả Thần Đông (Thế Giới Hoàn Mỹ) và cùng studio với Phàm Nhân Tu Tiên" ),
+            Phim(hinh = R.drawable.suhuynhasuhuynh, tenPhim = "Sư Huynh A Sư Huynh", theLoai = "Huyền huyễn, Cổ trang, Hài hước", tomtat = "Nội dung kể về Lý Trường Thọ – một thanh niên mắc bệnh hiểm nghèo vô tình được tái sinh vào thời thượng cổ trước đại chiến phong thần, trở thành một Luyện khí sĩ. Vì để tu được trường sinh bất lão và sống yên thân nơi hồng hoang tàn khốc này mà hắn hành sự khiêm tốn, tính trước làm sau, trước giờ không bao giờ bước vào nơi nguy hiểm, giấu át chủ bài, tu độn thuật, luyện đan độc. Cho đến một hôm, sư phụ của hắn nhận một sư muội về cho hắn, Lý Trường Thọ vốn muốn khiêm tốn tu hành bị cuốn vào hiểm nguy." ),
+            Phim(hinh = R.drawable.thananvuongtoa, tenPhim = "Thần Ấn Vương Tọa", theLoai = "Huyền huyễn, Kiếm hiệp", tomtat = "Một thiếu niên vì cứu mẫu thân của mình mà gia nhập Kỵ Sĩ Thánh Điện, kỳ tích, quỷ kế không ngừng xoay quanh hắn. Trên con đường để giải cứu nhân loại và tìm đến đỉnh cao của tu luyện hắn đã đi tìm và giải đáp rất nhiều bí ẩn của đại lục." ),
+            Phim(hinh = R.drawable.daichuate, tenPhim = "Đại Chúa Tể", theLoai = "Huyền huyễn", tomtat = "Đại thiên thế giới, nơi các vị diện giao nhau, vạn tộc hiện lên như nấm, quần hùng tụ hội, một vị Thiên chi chí tôn đến từ hạ vị diện tại vô tận thế giới diễn lại một truyền kỳ mà mọi người hướng tới, theo đuổi con đường chúa tể.\n" +
+                    "Hỏa vực vô tận, Viêm Đế nắm giữ, vạn hỏa đốt trời xanh. Trong võ cảnh, Võ Tổ chi uy, chấn nhiếp càn khôn. Bắc Hoang Khâu, Vạn Mộ Địa, Bất Tử chi chủ trấn thiên địa. Tây Thiên Điện, Bách Chiến chi hoàng, chiến uy không thể địch.\n" +
+                    "Thiếu niên bước ra từ Bắc Linh Cảnh, cưỡi Cửu U Minh Tước xông đến thế giới hỗn loạn đầy đặc sắc, con đường Chúa tể, ai nổi ai chìm? Đại thiên thế giới, vạn đạo tranh phong, ta làm Đại Chúa Tể."),
+            Phim(hinh = R.drawable.acmaphaptac, tenPhim = "Ác Ma Pháp Tắc", theLoai = "Xuyên không", tomtat = "Câu chuyện tập trung vào nhân vật chính, Devil, một ác ma bị trục xuất khỏi vương quốc yêu quái và bị đày vào thế giới của con người. Tại đây, Devil phải đối mặt với hàng loạt thách thức và cuộc phiêu lưu nguy hiểm để tìm cách trở về vương quốc của mình. Hành trình của anh sẽ đầy sự gay cấn và kịch tính, với những mối nguy hiểm và bất ngờ không ngừng."),
+            Phim(hinh = R.drawable.thegioihoanmyposter, tenPhim = "Thế Giới Hoàn Mỹ", theLoai = "Huyền huyễn, Tiên hiệp", tomtat = "Thế Giới Hoàn Mỹ cải biên từ tiểu thuyết cùng tên. Hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. Hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử thách của dòng chảy tháng năm. Hắn hoá thành vạn cổ, hoá thành tự tại. Xem nam chính Thạch Hạo làm thế nào đạt đến huy hoàng đỉnh cao một đời, tạo ra truyền thuyết vô tận." ),
+            Phim(hinh = R.drawable.phamnhantutienphan, tenPhim = "Phàm Nhân Tu Tiên", theLoai = "Huyền huyễn, Tiên hiệp, Cổ trang", tomtat = "Phàm Nhân Tu Tiên – Phong Khởi Thiên Nam. Nhân vật chính của truyện, Hàn Lập sinh ra trong một gia đình nông dân nghèo, có thúc thúc là nhân viên ngoại đường của một bang phái trung lưu. Bang phái tranh chấp nên đốc rút tuyển mộ đệ tử. Hàn Lập do tư chất thấp kém, trong vài đệ tử được tuyển thì hắn chỉ vào hạng vớt vát, hay còn gọi là kí danh đệ tử. Sau đó cùng một đệ tử khác nhập vào môn đồ của một thầy thuốc của bang phái. Sư phụ này của Hàn lập tuy là một gã võ công xuất chúng chứ không phải tu tiên giả nhưng biết được công pháp tu tiên và công pháp đoạt xá (đoạt lấy thân thể của người tu tiên, người nào có linh căn thì mới có thể tu tiên). Hàn Lập được dạy công pháp, nhưng trong đó lại ẩn chứa âm mưu của lão sư phụ, đánh nhau chết sống chủ yếu bằng trí tuệ mới vớt được cái mạng nhỏ. Bước vào giới tu tiên mới nhận ra mình thuộc lại tư chất cực kém. Nhưng bằng vào sự cẩn thận, luôn luôn suy nghĩ nên dần dần sinh sống và phát triển trong thế giới nhược nhục cường thực.\n" +
+                    "Một tiểu tử nghèo bình thường sống ở sơn thôn, ngẫu nhiên tiến vào môn phái giang hồ nhỏ, trở thành đệ tử ký danh. Thân phận hắn như vậy? Lại có tư chất bình thường, có thể tiến vào hàng ngũ của người tu tiên? Cự kiêu ma đầu, thuộc nhóm tiên tông tiên sư, đoàn vu sơn hải trong ngoài?\n" ),
+            Phim(hinh = R.drawable.dauladailuc, tenPhim = "Đấu La Đại Lục 2", theLoai = "Huyền huyễn", tomtat = "Nơi này không có ma pháp, không có đấu khí, không có võ thuật, lại có võ hồn. Đường Môn sáng lập vạn năm trên Đấu La đại lục, Đường Môn suy thoái. Một đời Thiên Kiêu hoành không xuất thế, Sử Lai Khắc thất quái đời mới có thể hồi sinh được Đường Môn, viết một khúc nhạc về Tuyệt Thế Đường Môn..\n" +
+                    "Hồn Thú trăm vạn năm, Tử Linh Thánh Pháp Thần tay cầm nhật nguyệt trích tinh thần, dẫn đến hệ thống Hồn Đạo Khí hoàn toàn mới khiến Đường Môn suy sụp."),
+            Phim(hinh = R.drawable.dauphathuongkhung, tenPhim = "Đấu Phá Thương Khung 5", theLoai = "Huyền huyễn, Cổ trang", tomtat = "Sau hẹn ước 3 năm, Tiêu Viêm cuối cùng cũng gặp được Huân Nhi ở học viện Già Nam, sau đó hắn kết giao nhiều bạn bè, thành lập Bàn Môn; vì tiếp tục nâng cao thực lực để lên Vân Lam Tông lần 3 báo thù cho cha, hắn mạo hiểm đi vào Thiên Phần luyện Khí Tháp thôn phệ Vẫn Lạc Tâm Viêm…"),
+            )
+        val phimAdapter = PhimAdapter(list)
+        rcvPhim.adapter = phimAdapter
+        phimAdapter.onItemClick = {phim, position ->
+            val intent = Intent(this, activity_detail::class.java)
+            intent.putExtra("film", phim)
+            startActivity(intent)
+        }
+    }
+}
